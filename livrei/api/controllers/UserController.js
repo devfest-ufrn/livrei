@@ -34,7 +34,7 @@ module.exports = {
 		//ToDo creating a new book to this user
 		//User.update()
 
-		return res.json({status: "Ok", messagem: "user id " + req.param('id') + " addBook valid"});
+		return res.json({status: "Ok", messagem: "user id = " + req.param('id') + " addBook valid"});
 	}
 	
 };
