@@ -30,7 +30,7 @@ module.exports = {
 
     userOwner: {
   		model: 'User',
-  		via: 'books'
+  		//via: 'books'
   	}
 
   }
