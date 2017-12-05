@@ -31,7 +31,7 @@ module.exports = {
 			return res.badRequest("Missing parameter");
 		} 
 
-		//ToDo creating a new book to this user
+		//Creating a new book to this user
 		User.findOne({id: req.param('id')}).exec(function addingBook(err, foundUser) {
 			if(err) return res.negotiate;
 			if(!foundUser) return res.notFound();
