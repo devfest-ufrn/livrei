@@ -32,9 +32,19 @@ module.exports = {
 		} 
 
 		//ToDo creating a new book to this user
-		//User.update()
+		User.findOne({id: req.param('id')}).exec(function addingBook(err, foundUser) {
+			if(err) return res.negotiate;
+			if(!foundUser) return res.notFound();
 
-		return res.json({status: "Ok", messagem: "user id " + req.param('id') + " addBook valid"});
+			Book.create({isbn: req.param('isbn'), title: req.param('title'), userOwner: foundUser.id}).exec(function createBook(err, createdBook){
+				if(err) return res.negotiate(err);
+
+				console.log("Book's created id: ", createdBook.id);
+				return res.json({status: "Success", id: createdBook.id});
+			});
+		});
+
+		//return res.json({status: "Ok", messagem: "user id " + req.param('id') + " addBook valid"});
 	}
 	
 };
